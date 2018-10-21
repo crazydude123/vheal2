@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<LinearLayout android:background="#ffffffff"
+              android:layout_height="match_parent"
+              android:layout_width="match_parent"
+              android:orientation="vertical"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:paddingStart="50dp"
+        android:paddingEnd="50dp"
+        android:scaleX="1"
+        android:scaleY="1"
+        android:text="@string/wanna_earn_money_by_answering_a_few_questions_click_to_register"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#ff7cb342" />
+
+    <Button
+        android:id="@+id/Reg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="50dp"
+        android:background="@color/colorAccent"
+        android:onClick="clickRegister"
+        android:text="@string/next"
+        android:textColor="#ff263238"
+        android:textSize="70dp" />
+
+    <Button
+        android:id="@+id/Login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="40dp"
+        android:background="#fffffbfb"
+        android:onClick="clickLogin"
+        android:text="@string/already_registered_click_to_login"
+        android:textColor="#ff03a9f4" />
+
+</LinearLayout>
