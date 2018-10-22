@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <LinearLayout tools:context="thatteidlipudina.com.vheal.LoginActivity"
-        android:background="@color/colourWhite"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:orientation="vertical" android:gravity="center_horizontal"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
+<LinearLayout tools:context="thatteidlipudina.com.vheal.LoginActivity"
+    android:background="@color/colourWhite"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <!-- Login progress -->
 
@@ -27,11 +29,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="30dp"
+            app:cardCornerRadius="10dp">
+
 
         <LinearLayout
             android:id="@+id/email_login_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/roundbox6"
             android:orientation="vertical">
 
 
@@ -41,6 +50,8 @@
 
                 <EditText
                     android:id="@+id/email"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/roundbox3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_email"
@@ -60,7 +71,9 @@
                     android:id="@+id/password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
                     android:hint="Password"
+                    android:background="@drawable/roundbox3"
                     android:imeActionId="6"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified"
@@ -76,8 +89,8 @@
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/colourWhite"
+                android:layout_margin="20dp"
+                android:background="@drawable/roundbox"
                 android:padding="30dp"
                 android:text="Login"
                 android:textColor="@color/colourBlack"
@@ -85,6 +98,7 @@
                 android:textStyle="bold" />
 
         </LinearLayout>
+        </android.support.v7.widget.CardView>
 
     </ScrollView>
 

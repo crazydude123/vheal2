@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<LinearLayout android:background="#ffffffff"
+<LinearLayout android:background="#8fe7f7"
               android:layout_height="match_parent"
               android:layout_width="match_parent"
               android:orientation="vertical"
@@ -9,6 +9,7 @@
 
     <TextView
         android:id="@+id/textView1"
+        android:background="@drawable/roundbox3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
@@ -19,14 +20,14 @@
         android:text="@string/wanna_earn_money_by_answering_a_few_questions_click_to_register"
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#ff7cb342" />
+        android:textColor="#2e5fad" />
 
     <Button
         android:id="@+id/Reg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="50dp"
-        android:background="@color/colorAccent"
+        android:background="@drawable/roundbox"
         android:onClick="clickRegister"
         android:text="@string/next"
         android:textColor="#ff263238"
@@ -37,9 +38,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="40dp"
-        android:background="#fffffbfb"
+        android:background="@drawable/roundbox6"
         android:onClick="clickLogin"
         android:text="@string/already_registered_click_to_login"
-        android:textColor="#ff03a9f4" />
+        android:textColor="@color/colourBlack"
+        android:textStyle="bold"/>
 
 </LinearLayout>

@@ -138,14 +138,15 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mAilments.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(redPincode=="" && bluePincode=="")
+                if(redPincode.equals("null") && bluePincode.equals("null"))
                     Toast.makeText(MapActivity.this, "Enter Location Again", Toast.LENGTH_SHORT).show();
-                else if(redPincode!=""){
+                else if(!redPincode.equals("null")){
                     pincodestatic= redPincode;
                 }
                 else{
                     pincodestatic=bluePincode;
                 }
+                Toast.makeText(MapActivity.this, pincodestatic, Toast.LENGTH_SHORT);
                 Log.d(TAG, "onClick: Entered onclickListener");
                 Intent intent = new Intent(MapActivity.this, Ailments_or_Report.class);
                 startActivity(intent);
@@ -179,7 +180,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                         || keyEvent.getAction() == KeyEvent.KEYCODE_ENTER){
 
                     //execute our method for searching
+
                     geoLocate();
+
                 }
 
                 return false;
@@ -507,6 +510,28 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 Log.d(TAG, "onResult: phone number: " + place.getPhoneNumber());
                 mPlace.setWebsiteUri(place.getWebsiteUri());
                 Log.d(TAG, "onResult: website uri: " + place.getWebsiteUri());
+
+                Geocoder geocoder = new Geocoder(MapActivity.this);
+                List<Address> list = new ArrayList<>();
+                try{
+                    list = geocoder.getFromLocationName(place.getName().toString(), 1);
+                }catch (IOException e){
+                    Log.e(TAG, "geoLocate: IOException: " + e.getMessage() );
+                }
+
+                if(list.size() > 0){
+                    Address address = list.get(0);
+
+                    Log.d(TAG, "geoLocate: found a location: " + address.toString());
+                    //Toast.makeText(this, address.toString(), Toast.LENGTH_SHORT).show();
+
+                    if(address.getPostalCode()!=null){
+                        redPincode = address.getPostalCode();
+                    }
+                }
+
+
+
 
                 Log.d(TAG, "onResult: place: " + mPlace.toString());
             }catch (NullPointerException e){

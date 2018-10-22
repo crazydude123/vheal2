@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.RadioButton;
 import android.widget.ToggleButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.CompoundButton;
@@ -19,7 +20,7 @@ import static thatteidlipudina.com.vheal.LoginActivity.usernamestatic;
 import static thatteidlipudina.com.vheal.MapActivity.pincodestatic;
 
 public class Ailments_or_Report extends AppCompatActivity {
-    int page;
+    int page=0,consult=0;
     static String patientNamestatic, diseaseStaticAilments;
     private EditText patientname, patientphone, diseasetext, patientdoctor;
     String doctoryes = "no", patientage;
@@ -38,26 +39,6 @@ public class Ailments_or_Report extends AppCompatActivity {
         np.setOnValueChangedListener(onValueChangeListener);
 
 
-
-
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        ToggleButton toggle = (ToggleButton) findViewById(R.id.toggleButton);
-
-
-        toggle.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                //int page;
-                if (isChecked) {
-                    page =1;
-                } else {
-                    page =0;
-                }
-            }
-        });
-
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,13 +54,13 @@ public class Ailments_or_Report extends AppCompatActivity {
 
     }
     public void onClickFloat(View view) {
-        if(page==1){
+        if(consult==1 && page==0){
                 doctoryes = "yes";
 //            Intent intent = new Intent(getApplicationContext(), UploadActivity.class);
 //            startActivity(intent);
 
         }
-        else if(page==0){
+        else if(consult==0 && page==0){
                 doctoryes = "no";
 //            Intent intent = new Intent(getApplicationContext(), Credit.class);
 //            startActivity(intent);
@@ -87,6 +68,8 @@ public class Ailments_or_Report extends AppCompatActivity {
         patientNamestatic=patientname.getText().toString();
         String patientPhone= patientphone.getText().toString();
         String diseaseText= diseasetext.getText().toString();
+        if(patientNamestatic==null || patientPhone==null || diseaseText==null)
+            page=1;
         diseaseStaticAilments= diseaseText;
         System.out.println(diseaseStaticAilments);
         Backgroundworker b = new Backgroundworker(Ailments_or_Report.this);
@@ -94,6 +77,22 @@ public class Ailments_or_Report extends AppCompatActivity {
         Toast.makeText(this, usernamestatic, Toast.LENGTH_SHORT).show();
     }
 
+    public void onRadioButtonClicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.radio1:
+                if (checked)
+                    consult=1;
+                    break;
+            case R.id.radio2:
+                if (checked)
+                    consult=2;
+                    break;
+        }
+    }
 
 
     NumberPicker.OnValueChangeListener onValueChangeListener =

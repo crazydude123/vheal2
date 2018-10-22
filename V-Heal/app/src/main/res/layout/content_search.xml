@@ -9,29 +9,54 @@
     tools:context="thatteidlipudina.com.vheal.Search"
     tools:showIn="@layout/app_bar_search">
 
-    <EditText
-        android:id="@+id/searchView"
-        android:layout_width="395dp"
-        android:layout_height="56dp"
-        android:hint="Enter a pincode to get disease-stats on..."
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="32dp" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:elevation="10dp"
+        android:background="@drawable/white_border"
+        android:id="@+id/relLayout1">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:id="@+id/ic_magnify"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/ic_magnify"/>
+
+        <AutoCompleteTextView
+            android:id="@+id/searchView"
+            android:layout_width="358dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="0dp"
+            android:layout_toRightOf="@+id/ic_magnify"
+            android:background="@null"
+            android:hint="Enter Address or Zip Code for disease stats..."
+            android:imeOptions="actionSearch"
+            android:textColor="#000"
+            android:textSize="15sp" />
+
+
+    </RelativeLayout>
 
     <EditText
         android:id="@+id/data1"
         android:layout_width="313dp"
-        android:layout_height="260dp"
-        android:layout_marginTop="112dp"
+        android:layout_height="295dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="261dp"
+        android:layout_marginBottom="104dp"
         android:ems="10"
         android:inputType="textMultiLine"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintHorizontal_bias="0.654"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView"
-        app:layout_constraintVertical_bias="0.182" />
+        app:layout_constraintTop_toBottomOf="@+id/relLayout1"
+        app:layout_constraintVertical_bias="1.0" />
 
 </android.support.constraint.ConstraintLayout>

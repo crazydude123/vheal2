@@ -63,26 +63,23 @@
 </string>
     <string name="information_app">
 
-        "
+        "> Medical reports help us alert millions of people all around, preventing epidemics thus.
 
-        1. Medical reports help us alert millions of people all around, preventing epidemics thus.
+> Your one medical report could save hundreds of lives.
 
-        2. Your one medical report could save hundreds of lives.
-
-        3. Search your area for microbes on the rise on your 'home screen', and take precautionary steps."</string>
+> Search your area for microbes on the rise on your 'home screen', and take precautionary steps."</string>
 
 
     <string name="information_prescription">
+"
+1. Your one medical report could save hundreds of lives.
 
-        "
+2. Submit your report, and earn credits.
 
-        1. Your one medical report could save hundreds of lives.
+3. We use the Google Vision API, and other ANN checks for handwritten scripts to invalidate your reports.
 
-        2. Submit your report, and earn credits.
 
-        3. We use the Google Vision API, and other ANN checks for handwritten scripts to invalidate your reports.
-
-        <font color= "#228B22" size="35"><b>One Report Upload can save millions!</b></font>"</string>
+        <font color= "#ff5630" size="35"><b>One Report Upload can save millions!</b></font>"</string>
 
     <string name="title_activity_maps">Map</string>
 
