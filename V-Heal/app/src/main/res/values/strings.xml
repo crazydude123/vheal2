@@ -79,7 +79,7 @@
 3. We use the Google Vision API, and other ANN checks for handwritten scripts to invalidate your reports.
 
 
-        <font color= "#ff5630" size="35"><b>One Report Upload can save millions!</b></font>"</string>
+        <font color= "#228B22" size="35"><b>One Report Upload can save millions!</b></font>"</string>
 
     <string name="title_activity_maps">Map</string>
 

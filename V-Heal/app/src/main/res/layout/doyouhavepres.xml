@@ -9,16 +9,16 @@
 
     <TextView
         android:id="@+id/textView8"
-        android:padding="20dp"
-        android:background="@drawable/roundbox3"
         android:layout_width="336dp"
-        android:layout_height="350dp"
+        android:layout_height="397dp"
         android:layout_marginTop="28dp"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/roundbox3"
         android:fontFamily="@font/alegreya_sans_thin"
+        android:padding="20dp"
         android:text="@string/information_prescription"
-        android:textColor="@color/colourBlack"
         android:textAlignment="center"
+        android:textColor="@color/colourBlack"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/noReport"
@@ -26,7 +26,7 @@
         app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.236" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/submitReport1"

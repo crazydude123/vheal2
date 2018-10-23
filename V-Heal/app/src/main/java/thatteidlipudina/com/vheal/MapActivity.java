@@ -33,6 +33,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.places.AutocompletePrediction;
 import com.google.android.gms.location.places.Place;
@@ -156,6 +157,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     private void init(){
         Log.d(TAG, "init: initializing");
+//        locationRequest = LocationRequest.create();
 
         mGoogleApiClient = new GoogleApiClient
                 .Builder(this)
@@ -288,6 +290,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
 
                 final Task location = mFusedLocationProviderClient.getLastLocation();
+
                 location.addOnCompleteListener(new OnCompleteListener() {
                     @Override
                     public void onComplete(@NonNull Task task) {
@@ -320,13 +323,13 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
 
                             /*
-                            *
-                            * Send
-                            * Current Location
-                            * currentLocation.getLatitude(), currentLocation.getLongitude()
-                            *
-                            *
-                            * */
+                             *
+                             * Send
+                             * Current Location
+                             * currentLocation.getLatitude(), currentLocation.getLongitude()
+                             *
+                             *
+                             * */
                         }else{
                             locationManager.requestLocationUpdates(bestProvider, 1000, 0, (android.location.LocationListener) MapActivity.this);
                             Log.d(TAG, "onComplete: current location is null");
@@ -407,7 +410,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private void getLocationPermission(){
         Log.d(TAG, "getLocationPermission: getting location permissions");
         String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION,
-        ACCESS_COARSE_LOCATION};
+                ACCESS_COARSE_LOCATION};
 
         if(ContextCompat.checkSelfPermission(this.getApplicationContext(),
                 FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
@@ -490,13 +493,13 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 mPlace.setAddress(place.getAddress().toString());
 
                 /*
-                * @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@SEND RESIDENCE to firebase@@@@@@@@@@@@@@@@
-                *
-                * send
-                * String s= place.getAddress().toString() ---- send
-                * String r= place.getLatLng() ----- send
-                *
-                * */
+                 * @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@SEND RESIDENCE to firebase@@@@@@@@@@@@@@@@
+                 *
+                 * send
+                 * String s= place.getAddress().toString() ---- send
+                 * String r= place.getLatLng() ----- send
+                 *
+                 * */
                 Log.d(TAG, "onResult: address: " + place.getAddress());
 //                mPlace.setAttributions(place.getAttributions().toString());
 //                Log.d(TAG, "onResult: attributions: " + place.getAttributions());
