@@ -76,7 +76,14 @@
 
 2. Submit your report, and earn credits.
 
+<<<<<<< HEAD
 3. We use the Google Vision API, and other ANN checks for handwritten scripts to invalidate your reports."</string>
+=======
+3. We use the Google Vision API, and other ANN checks for handwritten scripts to invalidate your reports.
+
+
+        <font color= "#228B22" size="35"><b>One Report Upload can save millions!</b></font>"</string>
+>>>>>>> 40ec30540c5c0ab5d3e48cc05d03ebf23046d642
 
     <string name="title_activity_maps">Map</string>
     <string name="live">"One Report Upload can save millions!"</string>
