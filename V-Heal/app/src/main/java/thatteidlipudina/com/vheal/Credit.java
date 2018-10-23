@@ -36,4 +36,9 @@ public class Credit extends AppCompatActivity {
         });
 
     }
+    public void homeClick(View view){
+        Intent intent = new Intent(getApplicationContext(), Search.class);
+        startActivity(intent);
+
+    }
 }

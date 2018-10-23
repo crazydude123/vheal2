@@ -7,23 +7,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <ScrollView
-        android:id="@+id/login_form"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="30dp"
             app:cardCornerRadius="10dp">
+
+            <ScrollView
+                android:id="@+id/login_form"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
 
             <LinearLayout
                 android:id="@+id/email_login_form"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/roundbox2"
+                android:background="@drawable/backgroundmint"
                 android:orientation="vertical">
 
 
@@ -145,7 +146,6 @@
 
                 <TextView
                     android:id="@+id/textView2"
-                    android:background="@drawable/roundbox6"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -187,17 +187,20 @@
 
                 <android.support.design.widget.FloatingActionButton
                     android:id="@+id/floatingActionButton"
-                    android:layout_width="52dp"
-                    android:layout_height="51dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="end"
+                    android:layout_margin="20dp"
                     android:clickable="true"
                     android:onClick="onClickFloat"
                     app:srcCompat="@mipmap/tick" />
 
 
             </LinearLayout>
-        </android.support.v7.widget.CardView>
 
     </ScrollView>
+        </android.support.v7.widget.CardView>
+
+
 
 </LinearLayout>

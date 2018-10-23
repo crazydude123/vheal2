@@ -50,7 +50,7 @@ import com.google.android.gms.maps.model.Marker;
 
 import thatteidlipudina.com.vheal.models.PlaceInfo;
 
-public class Search extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{
+public class Search extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, NavigationView.OnNavigationItemSelectedListener{
 
     String TAG = "Search";
     static String pincodestatic1;
@@ -69,6 +69,93 @@ public class Search extends AppCompatActivity implements GoogleApiClient.OnConne
             new LatLng(-40, -168), new LatLng(71, 136));
     private PlaceInfo mPlace;
     private Marker mMarker;
+
+
+
+
+
+
+    public static Bitmap getScreenShot(View view) {
+        View screenView = view.getRootView();
+        screenView.setDrawingCacheEnabled(true);
+        Bitmap bitmap = Bitmap.createBitmap(screenView.getDrawingCache());
+        screenView.setDrawingCacheEnabled(false);
+        return bitmap;
+    }
+
+    public static File store(Bitmap bm, String fileName){
+        final String dirPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Screenshots";
+        File dir = new File(dirPath);
+        if(!dir.exists())
+            dir.mkdirs();
+        File file = new File(dirPath, fileName);
+        try {
+            FileOutputStream fOut = new FileOutputStream(file);
+            bm.compress(Bitmap.CompressFormat.PNG, 85, fOut);
+            fOut.flush();
+            fOut.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }return dir;
+    }
+
+    private void shareImage(File file){
+        Uri uri = Uri.fromFile(file);
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_SEND);
+        intent.setType("image/*");
+
+        intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "");
+        intent.putExtra(android.content.Intent.EXTRA_TEXT, "");
+        intent.putExtra(Intent.EXTRA_STREAM, uri);
+        try {
+            startActivity(Intent.createChooser(intent, "Share Screenshot"));
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(getApplicationContext(),"No App Available", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.nav_camera) {
+            // Handle the camera action
+        } else if (id == R.id.nav_gallery) {
+
+        } else if (id == R.id.nav_slideshow) {
+
+            Intent intent = new Intent(Search.this, LoginActivity.class);
+            startActivity(intent);
+
+        } else if (id == R.id.nav_manage) {
+
+        } else if (id == R.id.nav_share) {
+            final View rootView = getWindow().getDecorView().findViewById(android.R.id.content);
+            Button share = (Button)findViewById(R.id.nav_share);
+            share.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Bitmap bitmap = getScreenShot(rootView);
+                    File f = store(bitmap,"Screenshot");
+                    shareImage(f);
+                }
+            });
+
+        } else if (id == R.id.nav_report) {
+                    Intent intent = new Intent(Search.this, MapActivity.class);
+                    startActivity(intent);
+                }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -120,18 +207,6 @@ public class Search extends AppCompatActivity implements GoogleApiClient.OnConne
             }
         });
         */
-        //Example list
-        list.add("Apple");
-        list.add("Banana");
-        list.add("Pineapple");
-        list.add("Orange");
-        list.add("Lychee");
-        list.add("Gavava");
-        list.add("Peech");
-        list.add("Melon");
-        list.add("Watermelon");
-        list.add("Papaya");
-
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
 //        listView.setAdapter(adapter);
 

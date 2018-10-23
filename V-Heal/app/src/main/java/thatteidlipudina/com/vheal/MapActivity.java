@@ -556,6 +556,12 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
 
     }
+
+    public void home2Click(View view){
+        Intent intent = new Intent(getApplicationContext(), Search.class);
+        startActivity(intent);
+
+    }
 }
 
 

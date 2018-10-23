@@ -14,7 +14,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/vhealicon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher1_round"
+        android:roundIcon="@mipmap/vhealicon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <meta-data
