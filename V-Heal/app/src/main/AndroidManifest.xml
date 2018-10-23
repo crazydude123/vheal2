@@ -36,12 +36,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="thatteidlipudina.com.vheal.LoginActivity" />
+        <activity android:name="thatteidlipudina.com.vheal.LoginActivity"
+            android:parentActivityName=".MainActivity1"/>
         <activity android:name="thatteidlipudina.com.vheal.MainActivity" />
         <activity android:name="thatteidlipudina.com.vheal.MapActivity" />
-        <activity android:name="thatteidlipudina.com.vheal.RegisterActivity" />
-        <activity android:name="thatteidlipudina.com.vheal.UploadActivity" />
-        <activity android:name="thatteidlipudina.com.vheal.Ailments_or_Report" />
+        <activity android:name="thatteidlipudina.com.vheal.RegisterActivity"
+            android:parentActivityName=".MainActivity1"/>
+        <activity android:name="thatteidlipudina.com.vheal.UploadActivity"
+            android:parentActivityName=".doyouhaveapres"/>
+        <activity android:name="thatteidlipudina.com.vheal.Ailments_or_Report"
+            android:parentActivityName=".MapActivity"/>
         <activity android:name="thatteidlipudina.com.vheal.Credit" />
         <activity android:name="thatteidlipudina.com.vheal.Search" />
         <activity android:name="thatteidlipudina.com.vheal.doyouhaveapres" />

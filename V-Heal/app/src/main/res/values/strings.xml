@@ -50,9 +50,9 @@
 
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_title">VHEAL</string>
 
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_subtitle">THATTE-IDLI-PUDINA-CHUTNEY</string>
 
     <string name="nav_header_desc">Navigation header</string>
     <string name="next">
@@ -76,11 +76,9 @@
 
 2. Submit your report, and earn credits.
 
-3. We use the Google Vision API, and other ANN checks for handwritten scripts to invalidate your reports.
-
-
-        <font color= "#ff5630" size="35"><b>One Report Upload can save millions!</b></font>"</string>
+3. We use the Google Vision API, and other ANN checks for handwritten scripts to invalidate your reports."</string>
 
     <string name="title_activity_maps">Map</string>
+    <string name="live">"One Report Upload can save millions!"</string>
 
 </resources>

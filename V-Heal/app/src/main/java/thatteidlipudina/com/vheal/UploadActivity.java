@@ -179,7 +179,7 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
                     .startUpload(); //Starting the upload
 
         } catch (Exception exc) {
-            Toast.makeText(this, exc.getMessage(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, exc.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -254,19 +254,6 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
                 }
 
 
-
-
-
-
-
-
-
-//                HashMap<String,String> data = new HashMap<>();
-//                data.put(UPLOAD_KEY, uploadImage);
-//
-//                String result = rh.sendPostRequest(UPLOAD_URL,data);
-
-//                return result;
                     return null;
             }
         }
@@ -329,6 +316,8 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
             //If the user has denied the permission previously your code will come to this block
             //Here you can explain why you need this permission
             //Explain here why you need this permission
+
+            Toast.makeText(UploadActivity.this, "Cannot proceed without permission", Toast.LENGTH_SHORT).show();
         }
         //And finally ask for the permission
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);

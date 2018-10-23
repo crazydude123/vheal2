@@ -13,49 +13,49 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="30dp"
+        android:layout_margin="20dp"
         android:background="@drawable/roundbox3"
-        android:paddingStart="50dp"
-        android:paddingEnd="50dp"
+        android:padding="5dp"
         android:scaleX="1"
         android:scaleY="1"
         android:text="Prevent Epidemics...Prevent Disasters"
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#2e5fad" />
+        android:textColor="@color/colorPrimary" />
 
     <ImageView
         android:id="@+id/imageButton"
-        android:layout_width="67dp"
-        android:layout_height="74dp"
+        android:layout_width="87dp"
+        android:layout_height="96dp"
         android:layout_gravity="center"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/roundbox3"
         app:srcCompat="@drawable/backgroundblue" />
 
     <Button
         android:id="@+id/Reg"
         android:layout_width="wrap_content"
-        android:background="@drawable/roundbox3"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="60dp"
+        android:background="@drawable/roundbox3"
         android:onClick="clickRegister"
         android:padding="10dp"
         android:text="SIGN UP"
-        android:textStyle="bold"
-        android:textColor="#ff263238"
-        android:textSize="20dp" />
+        android:textColor="@color/colorPrimary"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/Login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="40dp"
-        android:background="@drawable/roundbox3"
+        android:background="@drawable/roundbox4"
         android:onClick="clickLogin"
         android:text="@string/already_registered_click_to_login"
         android:textColor="@color/colourBlack"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
 
 
