@@ -37,7 +37,7 @@ public class fetchData extends AsyncTask<String,Void,String> {
     @Override
     protected String doInBackground(String... voids) {
         try {
-            URL url = new URL("https://vheal.000webhostapp.com/search.php");
+            URL url = new URL("vheal12.azurewebsites.net/search.php");
             HttpURLConnection htc = (HttpURLConnection) url.openConnection();
 
 

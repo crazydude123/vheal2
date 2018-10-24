@@ -76,7 +76,7 @@ public class Search extends AppCompatActivity implements GoogleApiClient.OnConne
 
 
 
-    public static Bitmap getScreenShot(View view) {
+    /*public static Bitmap getScreenShot(View view) {
         View screenView = view.getRootView();
         screenView.setDrawingCacheEnabled(true);
         Bitmap bitmap = Bitmap.createBitmap(screenView.getDrawingCache());
@@ -114,7 +114,7 @@ public class Search extends AppCompatActivity implements GoogleApiClient.OnConne
         } catch (ActivityNotFoundException e) {
             Toast.makeText(getApplicationContext(),"No App Available", Toast.LENGTH_SHORT).show();
         }
-    }
+    }*/
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -134,7 +134,7 @@ public class Search extends AppCompatActivity implements GoogleApiClient.OnConne
         }
 
         else if (id == R.id.nav_share) {
-            final View rootView = getWindow().getDecorView().findViewById(android.R.id.content);
+            /*final View rootView = getWindow().getDecorView().findViewById(android.R.id.content);
             Button share = (Button)findViewById(R.id.nav_share);
             share.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -143,7 +143,7 @@ public class Search extends AppCompatActivity implements GoogleApiClient.OnConne
                     File f = store(bitmap,"Screenshot");
                     shareImage(f);
                 }
-            });
+            });*/
 
         } else if (id == R.id.nav_report) {
                     Intent intent = new Intent(Search.this, MapActivity.class);

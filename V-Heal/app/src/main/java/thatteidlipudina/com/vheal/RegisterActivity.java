@@ -13,14 +13,12 @@ import com.github.nkzawa.socketio.client.Socket;
 import thatteidlipudina.com.vheal.R;
 
 public class RegisterActivity extends AppCompatActivity {
-    private Socket mSocket;
     static String namestatic;
     EditText mEmail, mName, mPassword, mPhone;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        vheal app = (vheal) getApplication();
         Button mRegister = (Button) findViewById(R.id.Done);
         mEmail= (EditText) findViewById(R.id.textemail);
         mName= (EditText) findViewById(R.id.textname);

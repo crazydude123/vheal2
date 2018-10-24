@@ -38,12 +38,12 @@ public class Backgroundworker extends AsyncTask<String,Void,String> {
     @Override
     protected String doInBackground(String... voids) {
 
-        String login_url = "https://vheal.000webhostapp.com/login.php";
-        String register_url = "https://vheal.000webhostapp.com/register.php";
-        String disease_URL = "https://vheal.000webhostapp.com/disease.php";
-        String upload_url = "https://vheal.000webhostapp.com/alert.php";
-        String search_url = "https://vheal.000webhostapp.com/search.php";
-        String patientupdate_URL= "https://vheal.000webhostapp.com/patientdetails.php";
+        String login_url = "vheal12.azurewebsites.net/login.php";
+        String register_url = "vheal12.azurewebsites.net/register.php";
+        String disease_URL = "vheal12.azurewebsites.net/disease.php";
+        String upload_url = "vheal12.azurewebsites.net/alert.php";
+        String search_url = "vheal12.azurewebsites.net/search.php";
+        String patientupdate_URL= "vheal12.azurewebsites.net/patientdetails.php";
 
         String type = voids[0];
         if (type.equals("login")) {
