@@ -27,6 +27,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:text="Menu"
+        android:textColor="@color/colourBlack"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="20dp"
         android:textStyle="bold" />

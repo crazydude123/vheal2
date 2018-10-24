@@ -1,59 +1,59 @@
 package thatteidlipudina.com.vheal;
 
-        import android.Manifest;
-        import android.app.ProgressDialog;
-        import android.content.Intent;
-        import android.content.pm.PackageManager;
-        import android.database.Cursor;
-        import android.graphics.Bitmap;
-        import android.net.Uri;
-        import android.os.AsyncTask;
-        import android.os.Bundle;
-        import android.provider.MediaStore;
-        import android.support.annotation.NonNull;
-        import android.support.v4.app.ActivityCompat;
-        import android.support.v4.content.ContextCompat;
-        import android.support.v7.app.AppCompatActivity;
-        import android.util.Base64;
-        import android.util.Log;
-        import android.util.SparseArray;
-        import android.view.View;
-        import android.widget.Button;
-        import android.widget.EditText;
-        import android.widget.ImageView;
-        import android.widget.TextView;
-        import android.widget.Toast;
-        import net.gotev.uploadservice.MultipartUploadRequest;
-        import net.gotev.uploadservice.UploadNotificationConfig;
+import android.Manifest;
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
+import android.util.Log;
+import android.util.SparseArray;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+import net.gotev.uploadservice.MultipartUploadRequest;
+import net.gotev.uploadservice.UploadNotificationConfig;
 
-        import java.io.BufferedReader;
-        import java.io.BufferedWriter;
-        import java.io.ByteArrayOutputStream;
-        import java.io.IOException;
-        import java.io.InputStream;
-        import java.io.InputStreamReader;
-        import java.io.OutputStream;
-        import java.io.OutputStreamWriter;
-        import java.net.HttpURLConnection;
-        import java.net.MalformedURLException;
-        import java.net.URL;
-        import java.net.URLEncoder;
-        import java.util.HashMap;
-        import java.util.UUID;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.UUID;
 
-        import com.google.android.gms.vision.Frame;
-        import com.google.android.gms.vision.text.Text;
-        import com.google.android.gms.vision.text.TextBlock;
-        import com.google.android.gms.vision.text.TextRecognizer;
+import com.google.android.gms.vision.Frame;
+import com.google.android.gms.vision.text.Text;
+import com.google.android.gms.vision.text.TextBlock;
+import com.google.android.gms.vision.text.TextRecognizer;
 
 
-        import thatteidlipudina.com.vheal.R;
+import thatteidlipudina.com.vheal.R;
 
-        import static thatteidlipudina.com.vheal.Ailments_or_Report.diseaseStaticAilments;
-        import static thatteidlipudina.com.vheal.Ailments_or_Report.patientNamestatic;
-        import static thatteidlipudina.com.vheal.Constants.UPLOAD_URL;
-        import static thatteidlipudina.com.vheal.LoginActivity.usernamestatic;
-        import static thatteidlipudina.com.vheal.MapActivity.pincodestatic;
+import static thatteidlipudina.com.vheal.Ailments_or_Report.diseaseStaticAilments;
+import static thatteidlipudina.com.vheal.Ailments_or_Report.patientNamestatic;
+import static thatteidlipudina.com.vheal.Constants.UPLOAD_URL;
+import static thatteidlipudina.com.vheal.LoginActivity.usernamestatic;
+import static thatteidlipudina.com.vheal.MapActivity.pincodestatic;
 
 public class UploadActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String UPLOAD_KEY = "image";
@@ -148,8 +148,10 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
                     }
                     String type="Upload";
                     txtView.setText(strBuilder.toString().substring(0, strBuilder.toString().length() - 1));
+                    System.out.println(patientNamestatic + "hi");
                     Backgroundworker b= new Backgroundworker(UploadActivity.this);
-                    b.execute(type,strBuilder.toString());
+                    b.execute(type,strBuilder.toString(), patientNamestatic);
+
                 }
             }
         });
@@ -179,7 +181,7 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
                     .startUpload(); //Starting the upload
 
         } catch (Exception exc) {
-            //Toast.makeText(this, exc.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, exc.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -254,7 +256,20 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
                 }
 
 
-                    return null;
+
+
+
+
+
+
+
+//                HashMap<String,String> data = new HashMap<>();
+//                data.put(UPLOAD_KEY, uploadImage);
+//
+//                String result = rh.sendPostRequest(UPLOAD_URL,data);
+
+//                return result;
+                return null;
             }
         }
 
@@ -316,8 +331,6 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
             //If the user has denied the permission previously your code will come to this block
             //Here you can explain why you need this permission
             //Explain here why you need this permission
-
-            Toast.makeText(UploadActivity.this, "Cannot proceed without permission", Toast.LENGTH_SHORT).show();
         }
         //And finally ask for the permission
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);

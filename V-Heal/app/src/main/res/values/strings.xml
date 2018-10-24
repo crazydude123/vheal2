@@ -79,6 +79,9 @@
 3. We use the Google Vision API, and other ANN checks for handwritten scripts to invalidate your reports."</string>
 
     <string name="title_activity_maps">Map</string>
-    <string name="live">"One Report Upload can save millions!"</string>
+    <string name="live">"<font color= "#228B22" size="28">One Report Upload can save millions!</font>"</string>
+    <string name="vision">"Use Vision API (click on Scan Image) to check if your prescription passes our initial screening.
+        Ignore this section if your report is hand-written"</string>
+    <string name="credits">"Credits are added to your name, in our database"</string>
 
 </resources>

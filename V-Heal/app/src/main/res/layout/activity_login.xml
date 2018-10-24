@@ -43,6 +43,28 @@
         app:layout_constraintStart_toEndOf="@+id/guideline" />
 
     <EditText
+        android:id="@+id/email"
+        android:layout_width="283dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="172dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginRight="55dp"
+        android:layout_marginBottom="37dp"
+        android:background="@drawable/roundbox3"
+        android:hint="@string/prompt_email"
+        android:inputType="textEmailAddress"
+        android:maxLines="1"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textColorHint="@color/colourBlue"
+        app:layout_constraintBottom_toTopOf="@+id/password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
         android:id="@+id/password"
         android:layout_width="291dp"
         android:layout_height="50dp"
@@ -64,28 +86,6 @@
         app:layout_constraintBottom_toTopOf="@+id/email_sign_in_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/guideline" />
-
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="283dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="26dp"
-        android:layout_marginLeft="26dp"
-        android:layout_marginTop="172dp"
-        android:layout_marginEnd="55dp"
-        android:layout_marginRight="55dp"
-        android:layout_marginBottom="37dp"
-        android:background="@drawable/roundbox3"
-        android:hint="@string/prompt_email"
-        android:inputType="textEmailAddress"
-        android:padding="10dp"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:textColorHint="@color/colourBlue"
-        app:layout_constraintBottom_toTopOf="@+id/password"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"

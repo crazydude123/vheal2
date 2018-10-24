@@ -11,15 +11,15 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="181dp"
-        android:layout_height="161dp"
+        android:layout_width="265dp"
+        android:layout_height="158dp"
         android:layout_marginStart="103dp"
         android:layout_marginLeft="103dp"
         android:layout_marginEnd="100dp"
         android:layout_marginRight="100dp"
-        android:layout_marginBottom="15dp"
         app:layout_constraintBottom_toTopOf="@+id/diseaseText"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -48,8 +48,8 @@
         android:layout_height="47dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="240dp"
+        android:hint="Name (optional)"
         android:padding="10dp"
-        android:hint="Title for image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
@@ -90,6 +90,7 @@
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/buttonProceed"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -128,7 +129,7 @@
     <TextView
         android:id="@+id/txtView"
         android:layout_width="226dp"
-        android:layout_height="127dp"
+        android:layout_height="142dp"
         android:layout_marginStart="79dp"
         android:layout_marginLeft="79dp"
         android:layout_marginTop="20dp"
@@ -137,16 +138,18 @@
         android:layout_marginRight="79dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/roundbox4"
-        android:padding="15dp"
         android:hint="@string/information_prescription"
-        android:textStyle="bold"
+        android:padding="15dp"
+        android:text="@string/vision"
         android:textAlignment="center"
+        android:textColor="@color/colourBlack"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/btnProcess"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextName"
-        tools:text="Use Vision API (click on Scan Image) to check if your prescription passes our initial screening.
-        Ignore this section if your report is hand-written." />
+        tools:text="@string/vision" />
 
 
 </android.support.constraint.ConstraintLayout>

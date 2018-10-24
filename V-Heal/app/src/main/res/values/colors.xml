@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#1177ae</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#1a6e3c</color>
+    <color name="colorAccent">#047d35</color>
 
 
     >
@@ -11,7 +11,7 @@
 
     <color name="colourWhite">#ffffff</color>
 
-    <color name="colourBlack">#517389</color>
+    <color name="colourBlack">#2f5e7c</color>
 
     <color name="colourLime">#a3db20</color>
     <color name="colourLightLime">#f0ffa8</color>
@@ -19,7 +19,7 @@
     <color name="colourGrey">#c1d4dd</color>
     <color name="colourOlive">#cdd856</color>
     <color name="colourMedLime">#d8ff5b</color>
-    <color name="LightestLime">#7ac400</color>
+    <color name="LightestLime">#acf236</color>
 
 
     <color name="colourPink">#f9dbf6</color>

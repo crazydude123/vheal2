@@ -178,6 +178,7 @@ public class Backgroundworker extends AsyncTask<String,Void,String> {
         else if (type.equals("Upload")) {
             try {
                 String reporttext = voids[1];
+                String reportname= voids[2];
                 //String pincode = voids[2];
                 //String email = voids[3];
                 URL url = new URL(upload_url);
@@ -190,7 +191,8 @@ public class Backgroundworker extends AsyncTask<String,Void,String> {
                 htc.setDoInput(true);
                 OutputStream os = htc.getOutputStream();
                 BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
-                String post_data = URLEncoder.encode("reporttext", "UTF-8") + "=" + URLEncoder.encode(reporttext, "UTF-8");
+                String post_data = URLEncoder.encode("reporttext", "UTF-8") + "=" + URLEncoder.encode(reporttext, "UTF-8")+ "&"
+                        + URLEncoder.encode("reportname", "UTF-8") + "=" + URLEncoder.encode(reportname, "UTF-8");
                 bw.write(post_data);
                 bw.flush();
                 bw.close();
@@ -360,6 +362,9 @@ public class Backgroundworker extends AsyncTask<String,Void,String> {
         else if(s.equals("Patient details uploaded")){
             Intent intent= new Intent(context, doyouhaveapres.class);
             context.startActivity(intent);
+        }
+        else if(s.equals("Valid")){
+            return;
         }
 
 

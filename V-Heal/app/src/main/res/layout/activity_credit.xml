@@ -41,7 +41,7 @@
         android:layout_height="68dp"
         android:layout_margin="150dp"
         android:background="@drawable/roundbox5"
-        android:text="Go Back >"
+        android:text="Home"
         android:textColor="@color/colourBlack"
         android:textSize="20dp"
         android:textStyle="bold"
@@ -51,4 +51,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:layout_constraintVertical_bias="0.778" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:text="@string/credits"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/colorAccent"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/back" />
 </android.support.constraint.ConstraintLayout>
