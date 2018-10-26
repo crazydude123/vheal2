@@ -14,6 +14,10 @@ import com.google.android.gms.common.GoogleApiAvailability;
 
 import thatteidlipudina.com.vheal.R;
 
+/*
+Thatte Idli Pudina Chutney
+Coded by members of ThatteIdliPudina Chutney for CodeFundo : Oct 26, 2018
+ */
 public class MainActivity extends AppCompatActivity  {
 
     private static final String TAG = "MainActivity";
@@ -24,7 +28,6 @@ public class MainActivity extends AppCompatActivity  {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Toast.makeText(this, "Main is ready", Toast.LENGTH_SHORT).show();
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);

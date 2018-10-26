@@ -1,22 +1,5 @@
 package thatteidlipudina.com.vheal;
 
-/*
- * Copyright (C) 2015 Google Inc. All Rights Reserved.
- *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
- */
-
-
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.Status;
@@ -44,16 +27,13 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
-
-/**
- * Adapter that handles Autocomplete requests from the Places Geo Data API.
- * {@link AutocompletePrediction} results from the API are frozen and stored directly in this
- * adapter. (See {@link AutocompletePrediction#freeze()}.)
- * <p>
- * Note that this adapter requires a valid {@link com.google.android.gms.common.api.GoogleApiClient}.
- * The API client must be maintained in the encapsulating Activity, including all lifecycle and
- * connection states. The API client must be connected with the {@link Places#GEO_DATA_API} API.
+/*
+Thatte Idli Pudina Chutney
+Coded by members of ThatteIdliPudina Chutney for CodeFundo : Oct 26, 2018
  */
+
+
+//AutoPlaceCompleteAdapter has been used with a Google Apache license 2016
 public class PlaceAutocompleteAdapter
         extends ArrayAdapter<AutocompletePrediction> implements Filterable {
 

@@ -1,5 +1,8 @@
 package thatteidlipudina.com.vheal;
-
+/*
+Thatte Idli Pudina Chutney
+Coded by members of ThatteIdliPudina Chutney for CodeFundo : Oct 26, 2018
+ */
 
 import android.content.Context;
 import android.content.Intent;
@@ -23,7 +26,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
-
+//This class connects to the backend php files
 public class Backgroundworker extends AsyncTask<String,Void,String> {
 
     String dataParsed = "";
@@ -86,7 +89,6 @@ public class Backgroundworker extends AsyncTask<String,Void,String> {
 
 
         }
-        //else if()
         else if (type.equals("register")) {
             try {
                 String username = voids[1];
@@ -179,8 +181,6 @@ public class Backgroundworker extends AsyncTask<String,Void,String> {
             try {
                 String reporttext = voids[1];
                 String reportname= voids[2];
-                //String pincode = voids[2];
-                //String email = voids[3];
                 URL url = new URL(upload_url);
                 HttpURLConnection htc = (HttpURLConnection) url.openConnection();
                 if (htc == null) {
@@ -220,8 +220,6 @@ public class Backgroundworker extends AsyncTask<String,Void,String> {
         else if (type.equals("Search")) {
             try {
                 String pincodeSearch = voids[1];
-                //String pincode = voids[2];
-                //String email = voids[3];
                 URL url = new URL(search_url);
                 HttpURLConnection htc = (HttpURLConnection) url.openConnection();
                 if (htc == null) {
@@ -338,7 +336,7 @@ public class Backgroundworker extends AsyncTask<String,Void,String> {
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
         Toast.makeText(context, s, Toast.LENGTH_SHORT).show();
-        if(s.equals("null")){
+        if(s == null && s.equals("")){
             Toast.makeText(context, "Server error", Toast.LENGTH_SHORT).show();
         }
         else if (s.equals("Login Successful")) {
@@ -380,8 +378,6 @@ public class Backgroundworker extends AsyncTask<String,Void,String> {
         try {
             new JSONObject(test);
         } catch (JSONException ex) {
-            // edited, to include @Arthur's comment
-            // e.g. in case JSONArray is valid as well...
             try {
                 new JSONArray(test);
             } catch (JSONException ex1) {

@@ -10,6 +10,11 @@ import android.content.Intent;
 
 import thatteidlipudina.com.vheal.R;
 
+/*
+Thatte Idli Pudina Chutney
+Coded by members of ThatteIdliPudina Chutney for CodeFundo : Oct 26, 2018
+ */
+
 public class MainActivity1 extends AppCompatActivity {
 
     private static final String TAG = "MainActivity1";

@@ -19,11 +19,16 @@ import thatteidlipudina.com.vheal.R;
 import static thatteidlipudina.com.vheal.LoginActivity.usernamestatic;
 import static thatteidlipudina.com.vheal.MapActivity.pincodestatic;
 
+/*
+Thatte Idli Pudina Chutney: Oct 26, 2018
+This class if for the Report collection
+ */
+
 public class Ailments_or_Report extends AppCompatActivity {
     int page=0,consult=0;
-    static String patientNamestatic, diseaseStaticAilments;
+    static String patientNamestatic="", diseaseStaticAilments="";
     private EditText patientname, patientphone, diseasetext, patientdoctor;
-    String doctoryes = "no", patientage;
+    String doctoryes = "no", patientage = "0";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,50 +43,34 @@ public class Ailments_or_Report extends AppCompatActivity {
 
         np.setOnValueChangedListener(onValueChangeListener);
 
-
-        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.floatingActionButton);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClickFloat(View view) {
-                if(page==1){
-                    Intent intent = new Intent(getApplicationContext(), Upload.class);
-                    startActivity(intent);
-
-                }
-            }
-        });*/
-
-
     }
     public void onClickFloat(View view) {
         if(consult==1 && page==0){
                 doctoryes = "yes";
-//            Intent intent = new Intent(getApplicationContext(), UploadActivity.class);
-//            startActivity(intent);
-
         }
         else if(consult==0 && page==0){
                 doctoryes = "no";
-//            Intent intent = new Intent(getApplicationContext(), Credit.class);
-//            startActivity(intent);
         }
+        else{}
         patientNamestatic=patientname.getText().toString();
         String patientPhone= patientphone.getText().toString();
         String diseaseText= diseasetext.getText().toString();
-        if(patientNamestatic==null || patientPhone==null || diseaseText==null)
-            page=1;
+        System.out.println(patientPhone + "hi");
         diseaseStaticAilments= diseaseText;
-        System.out.println(diseaseStaticAilments);
-        Backgroundworker b = new Backgroundworker(Ailments_or_Report.this);
-        b.execute("patient update", patientPhone, patientNamestatic, patientage, pincodestatic, doctoryes, diseaseText, usernamestatic);
-        Toast.makeText(this, usernamestatic, Toast.LENGTH_SHORT).show();
-    }
+
+
+        if((patientNamestatic!=null && !patientNamestatic.equals("")) && (patientPhone!=null && !patientPhone.equals(""))  && (diseaseText!=null && !diseaseText.equals(""))){
+            Backgroundworker b = new Backgroundworker(Ailments_or_Report.this);
+            b.execute("patient update", patientPhone, patientNamestatic, patientage, pincodestatic, doctoryes, diseaseText, usernamestatic);
+            Toast.makeText(this, usernamestatic, Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(this, "Enter all details please", Toast.LENGTH_SHORT).show();
+        }
+        }
 
     public void onRadioButtonClicked(View view) {
-        // Is the button now checked?
         boolean checked = ((RadioButton) view).isChecked();
-
-        // Check which radio button was clicked
         switch(view.getId()) {
             case R.id.radio1:
                 if (checked)
@@ -99,9 +88,11 @@ public class Ailments_or_Report extends AppCompatActivity {
             new NumberPicker.OnValueChangeListener(){
                 @Override
                 public void onValueChange(NumberPicker numberPicker, int i, int i1) {
-                    Toast.makeText(Ailments_or_Report.this,
-                            "selected number "+numberPicker.getValue(), Toast.LENGTH_SHORT);
-                    patientage= Integer.toString(numberPicker.getValue());
-                }
+
+                        Toast.makeText(Ailments_or_Report.this,
+                                "selected number " + numberPicker.getValue(), Toast.LENGTH_SHORT);
+                        patientage = Integer.toString(numberPicker.getValue());
+
+                    }
             };
 }

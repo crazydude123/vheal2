@@ -38,8 +38,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.UUID;
 
 import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.text.Text;
@@ -55,8 +53,13 @@ import static thatteidlipudina.com.vheal.Constants.UPLOAD_URL;
 import static thatteidlipudina.com.vheal.LoginActivity.usernamestatic;
 import static thatteidlipudina.com.vheal.MapActivity.pincodestatic;
 
+/*
+Thatte Idli Pudina Chutney
+Coded by members of ThatteIdliPudina Chutney for CodeFundo : Oct 26, 2018
+ */
+
 public class UploadActivity extends AppCompatActivity implements View.OnClickListener {
-    public static final String UPLOAD_KEY = "image";
+
 
     private static final String TAG = "UploadActivity";
     //Declaring views
@@ -65,7 +68,7 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
     private ImageView imageView;
     private EditText editText, diseaseText;
 
-    //Image request code
+    //request code
     private int PICK_IMAGE_REQUEST = 1;
 
     //storage permission code
@@ -156,36 +159,6 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
             }
         });
     }
-
-    /*
-     * This is the method responsible for image upload
-     * We need the full image path and the name for the image in this method
-     * */
-    public void uploadMultipart() {
-        //getting name for the image
-        String name = editText.getText().toString().trim();
-
-        //getting the actual path of the image
-        String path = getPath(filePath);
-
-        //Uploading code
-        try {
-            String uploadId = UUID.randomUUID().toString();
-
-            //Creating a multi part request
-            new MultipartUploadRequest(this, uploadId, UPLOAD_URL)
-                    .addFileToUpload(path, "image") //Adding file
-                    .addParameter("name", name) //Adding text parameter to the request
-                    .setNotificationConfig(new UploadNotificationConfig())
-                    .setMaxRetries(2)
-                    .startUpload(); //Starting the upload
-
-        } catch (Exception exc) {
-            Toast.makeText(this, exc.getMessage(), Toast.LENGTH_SHORT).show();
-        }
-    }
-
-
     public String getStringImage(Bitmap bmp){
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
@@ -195,24 +168,23 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
     }
 
 
-    private void uploadImage(){
-        class UploadImage extends AsyncTask<Bitmap,Void,String> {
+    private void uploadImage() {
+        class UploadImage extends AsyncTask<Bitmap, Void, String> {
 
             ProgressDialog loading;
 
-            RequestHandler rh = new RequestHandler();
 
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loading = ProgressDialog.show(UploadActivity.this, "Uploading...", null,true,true);
+                loading = ProgressDialog.show(UploadActivity.this, "Uploading...", null, true, true);
             }
 
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 loading.dismiss();
-                Toast.makeText(getApplicationContext(),s,Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -221,61 +193,50 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
                 String uploadImage = getStringImage(bitmap);
 
 
-                try {
-                    URL url = new URL(UPLOAD_URL);
-                    HttpURLConnection htc = (HttpURLConnection) url.openConnection();
-                    if (htc == null) {
-                        Toast.makeText(UploadActivity.this, "connection failed", Toast.LENGTH_SHORT).show();
+
+
+                    try {
+                        URL url = new URL(UPLOAD_URL);
+                        HttpURLConnection htc = (HttpURLConnection) url.openConnection();
+                        if (htc == null) {
+                            Toast.makeText(UploadActivity.this, "connection failed", Toast.LENGTH_SHORT).show();
+                        }
+                        htc.setRequestMethod("POST");
+                        htc.setDoOutput(true);
+                        htc.setDoInput(true);
+                        OutputStream os = htc.getOutputStream();
+                        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
+                        String post_data = URLEncoder.encode("patientname", "UTF-8") + "=" + URLEncoder.encode(patientNamestatic, "UTF-8") + "&"
+                                + URLEncoder.encode("image", "UTF-8") + "=" + URLEncoder.encode(uploadImage, "UTF-8");
+                        bw.write(post_data);
+                        bw.flush();
+                        bw.close();
+                        os.close();
+                        InputStream is = htc.getInputStream();
+                        BufferedReader br = new BufferedReader(new InputStreamReader(is, "iso-8859-1"));
+                        String result = "";
+                        String line = "";
+                        while ((line = br.readLine()) != null) {
+                            result += line;
+                        }
+                        br.close();
+                        is.close();
+                        htc.disconnect();
+                        return result;
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
-                    htc.setRequestMethod("POST");
-                    htc.setDoOutput(true);
-                    htc.setDoInput(true);
-                    OutputStream os = htc.getOutputStream();
-                    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
-                    String post_data = URLEncoder.encode("patientname", "UTF-8") + "=" + URLEncoder.encode(patientNamestatic, "UTF-8") + "&"
-                            + URLEncoder.encode("image", "UTF-8") + "=" + URLEncoder.encode(uploadImage, "UTF-8");
-                    bw.write(post_data);
-                    bw.flush();
-                    bw.close();
-                    os.close();
-                    InputStream is = htc.getInputStream();
-                    BufferedReader br = new BufferedReader(new InputStreamReader(is, "iso-8859-1"));
-                    String result = "";
-                    String line = "";
-                    while ((line = br.readLine()) != null) {
-                        result += line;
-                    }
-                    br.close();
-                    is.close();
-                    htc.disconnect();
-                    return result;
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
 
 
-
-
-
-
-
-
-
-//                HashMap<String,String> data = new HashMap<>();
-//                data.put(UPLOAD_KEY, uploadImage);
-//
-//                String result = rh.sendPostRequest(UPLOAD_URL,data);
-
-//                return result;
                 return null;
+                }
             }
-        }
 
-        UploadImage ui = new UploadImage();
+            UploadImage ui = new UploadImage();
         ui.execute(bitmap);
-    }
+        }
 
 
     //method to show file chooser
@@ -328,16 +289,14 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
             return;
 
         if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
-            //If the user has denied the permission previously your code will come to this block
-            //Here you can explain why you need this permission
-            //Explain here why you need this permission
+        //Ask user for permission(tellhim why to trust us)
+
         }
         //And finally ask for the permission
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
     }
 
 
-    //This method will be called when the user will tap on allow or deny
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 

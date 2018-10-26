@@ -51,6 +51,11 @@ import com.google.android.gms.maps.model.Marker;
 
 import thatteidlipudina.com.vheal.models.PlaceInfo;
 
+/*
+Thatte Idli Pudina Chutney
+Coded by members of ThatteIdliPudina Chutney for CodeFundo : Oct 26, 2018
+ */
+
 public class Search extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, NavigationView.OnNavigationItemSelectedListener{
 
     String TAG = "Search";
@@ -75,47 +80,6 @@ public class Search extends AppCompatActivity implements GoogleApiClient.OnConne
 
 
 
-
-    /*public static Bitmap getScreenShot(View view) {
-        View screenView = view.getRootView();
-        screenView.setDrawingCacheEnabled(true);
-        Bitmap bitmap = Bitmap.createBitmap(screenView.getDrawingCache());
-        screenView.setDrawingCacheEnabled(false);
-        return bitmap;
-    }
-
-    public static File store(Bitmap bm, String fileName){
-        final String dirPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Screenshots";
-        File dir = new File(dirPath);
-        if(!dir.exists())
-            dir.mkdirs();
-        File file = new File(dirPath, fileName);
-        try {
-            FileOutputStream fOut = new FileOutputStream(file);
-            bm.compress(Bitmap.CompressFormat.PNG, 85, fOut);
-            fOut.flush();
-            fOut.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }return dir;
-    }
-
-    private void shareImage(File file){
-        Uri uri = Uri.fromFile(file);
-        Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_SEND);
-        intent.setType("image/*");
-
-        intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "");
-        intent.putExtra(android.content.Intent.EXTRA_TEXT, "");
-        intent.putExtra(Intent.EXTRA_STREAM, uri);
-        try {
-            startActivity(Intent.createChooser(intent, "Share Screenshot"));
-        } catch (ActivityNotFoundException e) {
-            Toast.makeText(getApplicationContext(),"No App Available", Toast.LENGTH_SHORT).show();
-        }
-    }*/
-
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
 
@@ -134,6 +98,8 @@ public class Search extends AppCompatActivity implements GoogleApiClient.OnConne
         }
 
         else if (id == R.id.nav_share) {
+
+            // Ditching the idea for now.
             /*final View rootView = getWindow().getDecorView().findViewById(android.R.id.content);
             Button share = (Button)findViewById(R.id.nav_share);
             share.setOnClickListener(new View.OnClickListener() {

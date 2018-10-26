@@ -14,6 +14,10 @@ import android.widget.ImageView;
 
 import thatteidlipudina.com.vheal.R;
 
+/*
+Thatte Idli Pudina Chutney
+Coded by members of ThatteIdliPudina Chutney for CodeFundo : Oct 26, 2018
+ */
 public class Credit extends AppCompatActivity {
     Button mButton;
     @Override

@@ -12,6 +12,10 @@ import com.github.nkzawa.socketio.client.Socket;
 
 import thatteidlipudina.com.vheal.R;
 
+/*
+Thatte Idli Pudina Chutney
+Coded by members of ThatteIdliPudina Chutney for CodeFundo : Oct 26, 2018
+ */
 public class RegisterActivity extends AppCompatActivity {
     static String namestatic;
     EditText mEmail, mName, mPassword, mPhone;

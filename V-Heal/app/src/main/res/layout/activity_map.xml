@@ -45,7 +45,7 @@
             android:textColor="#000"
             android:id="@+id/input_search"
             android:background="@null"
-            android:hint="Enter Address, City or Zip Code"
+            android:hint="Patient Location (Use places API if necessary)"
             android:imeOptions="actionSearch"/>
 
 
@@ -61,28 +61,30 @@
         android:scaleType="centerCrop"
         android:id="@+id/ic_gps"
         android:src="@drawable/ic_gps"/>
+
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_alignStart="@+id/ic_gps"
+        android:layout_alignLeft="@+id/ic_gps"
         android:layout_alignParentTop="true"
         android:layout_marginStart="-3dp"
+        android:layout_marginLeft="-3dp"
         android:layout_marginTop="139dp"
-        app:srcCompat="@mipmap/homebutton"
         android:onClick="home2Click"
-        android:layout_alignLeft="@+id/ic_gps"
-        android:layout_marginLeft="-3dp" />
+        app:srcCompat="@mipmap/homebutton" />
 
     <ImageView
+        android:id="@+id/place_picker"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:id="@+id/place_picker"
+        android:layout_below="@+id/relLayout1"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="15dp"
         android:scaleType="centerCrop"
-        android:layout_below="@+id/relLayout1"
-        android:src="@drawable/ic_map"/>
+        android:src="@drawable/ic_map"
+        app:srcCompat="@mipmap/ic_placepickey" />
 
     <ImageView
         android:id="@+id/place_info"

@@ -33,6 +33,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.places.AutocompletePrediction;
 import com.google.android.gms.location.places.Place;
@@ -53,13 +54,15 @@ import com.google.android.gms.location.LocationListener;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import thatteidlipudina.com.vheal.models.PlaceInfo;
 
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 
-/**
- * Created by User on 10/2/2017.
+/*
+Thatte Idli Pudina Chutney
+Coded by members of ThatteIdliPudina Chutney for CodeFundo : Oct 26, 2018
  */
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback,
@@ -138,10 +141,11 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mAilments.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(redPincode.equals("null") && bluePincode.equals("null"))
+                if(redPincode == null && redPincode.equals("") && bluePincode == null && bluePincode.equals("") )
                     Toast.makeText(MapActivity.this, "Enter Location Again", Toast.LENGTH_SHORT).show();
-                else if(!redPincode.equals("null")){
+                else if(redPincode != null && !redPincode.equals("")){
                     pincodestatic= redPincode;
+                    System.out.println(redPincode + "redpincode");
                 }
                 else{
                     pincodestatic=bluePincode;
@@ -156,6 +160,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     private void init(){
         Log.d(TAG, "init: initializing");
+//        locationRequest = LocationRequest.create();
 
         mGoogleApiClient = new GoogleApiClient
                 .Builder(this)
@@ -193,6 +198,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             @Override
             public void onClick(View view) {
                 Log.d(TAG, "onClick: clicked gps icon");
+                redPincode="";
                 getDeviceLocation();
             }
         });
@@ -269,9 +275,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             moveCamera(new LatLng(address.getLatitude(), address.getLongitude()), DEFAULT_ZOOM,
                     address.getAddressLine(0));
 
-            if(address.getPostalCode()!=null){
-                redPincode=address.getPostalCode();
-            }
+//            if(address.getPostalCode()!=null){
+//                redPincode=address.getPostalCode();
+//            }
         }
     }
 
@@ -288,6 +294,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
 
                 final Task location = mFusedLocationProviderClient.getLastLocation();
+
                 location.addOnCompleteListener(new OnCompleteListener() {
                     @Override
                     public void onComplete(@NonNull Task task) {
@@ -320,13 +327,13 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
 
                             /*
-                            *
-                            * Send
-                            * Current Location
-                            * currentLocation.getLatitude(), currentLocation.getLongitude()
-                            *
-                            *
-                            * */
+                             *
+                             * Send
+                             * Current Location
+                             * currentLocation.getLatitude(), currentLocation.getLongitude()
+                             *
+                             *
+                             * */
                         }else{
                             locationManager.requestLocationUpdates(bestProvider, 1000, 0, (android.location.LocationListener) MapActivity.this);
                             Log.d(TAG, "onComplete: current location is null");
@@ -360,15 +367,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                         .title(placeInfo.getName())
                         .snippet(snippet);
                 mMarker = mMap.addMarker(options);
-                Geocoder geocoder = new Geocoder(MapActivity.this);
-                try {
-                    List<Address> addresses = geocoder.getFromLocation(lat1, long1, 1);
-                    if(addresses!= null && addresses.size()>0){
-                        redPincode= addresses.get(0).getPostalCode();
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+
 
 
             }catch (NullPointerException e){
@@ -382,11 +381,25 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         hideSoftKeyboard();
     }
 
-    private void moveCamera(LatLng latLng, float zoom, String title){
+    private void moveCamera(LatLng latLng, float zoom, String title) {
         Log.d(TAG, "moveCamera: moving the camera to: lat: " + latLng.latitude + ", lng: " + latLng.longitude );
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
 
         if(!title.equals("My Location")){
+            lat1= latLng.latitude; long1= latLng.longitude;
+
+            Geocoder geocoder;
+            List<Address> addresses;
+            geocoder = new Geocoder(this, Locale.getDefault());
+
+            try {
+                addresses = geocoder.getFromLocation(lat1, long1, 1);
+                redPincode= addresses.get(0).getPostalCode();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
             MarkerOptions options = new MarkerOptions()
                     .position(latLng)
                     .title(title);
@@ -407,7 +420,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private void getLocationPermission(){
         Log.d(TAG, "getLocationPermission: getting location permissions");
         String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION,
-        ACCESS_COARSE_LOCATION};
+                ACCESS_COARSE_LOCATION};
 
         if(ContextCompat.checkSelfPermission(this.getApplicationContext(),
                 FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
@@ -490,13 +503,13 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 mPlace.setAddress(place.getAddress().toString());
 
                 /*
-                * @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@SEND RESIDENCE to firebase@@@@@@@@@@@@@@@@
-                *
-                * send
-                * String s= place.getAddress().toString() ---- send
-                * String r= place.getLatLng() ----- send
-                *
-                * */
+                 * @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@SEND RESIDENCE to firebase@@@@@@@@@@@@@@@@
+                 *
+                 * send
+                 * String s= place.getAddress().toString() ---- send
+                 * String r= place.getLatLng() ----- send
+                 *
+                 * */
                 Log.d(TAG, "onResult: address: " + place.getAddress());
 //                mPlace.setAttributions(place.getAttributions().toString());
 //                Log.d(TAG, "onResult: attributions: " + place.getAttributions());
@@ -525,8 +538,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                     Log.d(TAG, "geoLocate: found a location: " + address.toString());
                     //Toast.makeText(this, address.toString(), Toast.LENGTH_SHORT).show();
 
-                    if(address.getPostalCode()!=null){
+                    if(address.getPostalCode()!= null){
                         redPincode = address.getPostalCode();
+                        System.out.println(redPincode + "redpincode");
                     }
                 }
 

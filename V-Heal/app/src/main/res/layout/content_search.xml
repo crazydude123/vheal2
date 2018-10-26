@@ -34,7 +34,7 @@
             android:layout_marginLeft="0dp"
             android:layout_toRightOf="@+id/ic_magnify"
             android:background="@null"
-            android:hint="Enter Address or Zip Code for disease stats..."
+            android:hint="Choose a location from the auto-suggestions. Type away..."
             android:imeOptions="actionSearch"
             android:textColor="#000"
             android:textSize="15sp" />

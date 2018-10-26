@@ -11,30 +11,25 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.github.nkzawa.socketio.client.Socket;
-
+/*
+Thatte Idli Pudina Chutney
+Coded by members of ThatteIdliPudina Chutney for CodeFundo : Oct 26, 2018
+ */
 public class LoginActivity extends AppCompatActivity {
     static String usernamestatic;
     private Socket socket;
     private EditText mEmailView;
     private EditText mPasswordView;
+    String username="";
+    String pass="";
 
-    //
-    private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
-        return password.length() > 4;
-
-    }
-
-    private boolean isEmailValid(String email) {
-        //TODO: Replace this with your own logic
-        return email.contains("@");
-    }
     Button mEmailSignInButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         mEmailView= (EditText) findViewById(R.id.email);
         mPasswordView=(EditText)findViewById(R.id.password);
         mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
@@ -42,15 +37,15 @@ public class LoginActivity extends AppCompatActivity {
        mEmailSignInButton.setOnClickListener(new View.OnClickListener() {
                                                   public void onClick(View view) {
                                                       String type= "login";
-                                                      String username= mEmailView.getText().toString();
+                                                      username= mEmailView.getText().toString();
                                                       usernamestatic=username;
-                                                      Toast.makeText(LoginActivity.this,username, Toast.LENGTH_SHORT).show();
-                                                      String pass=mPasswordView.getText().toString();
-                                                      Backgroundworker b= new Backgroundworker(LoginActivity.this);
-                                                      b.execute(type, username, pass);
-
-//                                                      Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//                                                      startActivity(intent);
+                                                      pass=mPasswordView.getText().toString();
+                                                      if((pass!=null && !pass.equals("")) && (username!=null && !username.equals("null"))) {
+                                                          Backgroundworker b = new Backgroundworker(LoginActivity.this);
+                                                          b.execute(type, username, pass);
+                                                      }
+                                                      else
+                                                          Toast.makeText(LoginActivity.this, "Enter credentials", Toast.LENGTH_SHORT).show();
                                                   }
                                               }
 

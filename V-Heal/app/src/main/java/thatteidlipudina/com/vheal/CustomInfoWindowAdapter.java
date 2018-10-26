@@ -12,10 +12,10 @@ import com.google.android.gms.maps.model.Marker;
 
 import thatteidlipudina.com.vheal.R;
 
-/**
- * Created by User on 10/2/2017.
+/*
+Thatte Idli Pudina Chutney
+Coded by members of ThatteIdliPudina Chutney for CodeFundo : Oct 26, 2018
  */
-
 public class CustomInfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
 
     private final View mWindow;
