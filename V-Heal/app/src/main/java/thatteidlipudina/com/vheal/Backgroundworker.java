@@ -336,33 +336,32 @@ public class Backgroundworker extends AsyncTask<String,Void,String> {
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
         Toast.makeText(context, s, Toast.LENGTH_SHORT).show();
-        if(s == null && s.equals("")){
-            Toast.makeText(context, "Server error", Toast.LENGTH_SHORT).show();
-        }
-        else if (s.equals("Login Successful")) {
-            Intent intent = new Intent(context, MainActivity.class);
-            context.startActivity(intent);
-        }
-        else if(s.equals("Registration Successful")){
-            Intent intent = new Intent(context, LoginActivity.class);
-            context.startActivity(intent);
-        }
-        else if(s.equals("Update Successful")){
-            Intent intent = new Intent(context, Credit.class);
-            context.startActivity(intent);
-        }
-        else if(s.equals(dataParsed)){
-            System.out.println(dataParsed + "dataPased" );
-            if (dataParsed != null) {
-                Search.data1static.setText(dataParsed);
+        if(s != null && !s.equals("")) {
+
+
+            if (s.equals("Login Successful")) {
+                Intent intent = new Intent(context, MainActivity.class);
+                context.startActivity(intent);
+            } else if (s.equals("Registration Successful")) {
+                Intent intent = new Intent(context, LoginActivity.class);
+                context.startActivity(intent);
+            } else if (s.equals("Update Successful")) {
+                Intent intent = new Intent(context, Credit.class);
+                context.startActivity(intent);
+            } else if (s.equals(dataParsed)) {
+                System.out.println(dataParsed + "dataPased");
+                if (dataParsed != null) {
+                    Search.data1static.setText(dataParsed);
+                }
+            } else if (s.equals("Patient details uploaded")) {
+                Intent intent = new Intent(context, doyouhaveapres.class);
+                context.startActivity(intent);
+            } else if (s.equals("Valid")) {
+                return;
             }
         }
-        else if(s.equals("Patient details uploaded")){
-            Intent intent= new Intent(context, doyouhaveapres.class);
-            context.startActivity(intent);
-        }
-        else if(s.equals("Valid")){
-            return;
+        else{
+            Toast.makeText(context, "Server error", Toast.LENGTH_SHORT).show();
         }
 
 

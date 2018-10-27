@@ -73,7 +73,7 @@
         android:layout_marginLeft="-3dp"
         android:layout_marginTop="139dp"
         android:onClick="home2Click"
-        app:srcCompat="@mipmap/homebutton" />
+        app:srcCompat="@mipmap/ic_launcher_foreground"/>
 
     <ImageView
         android:id="@+id/place_picker"
@@ -84,7 +84,7 @@
         android:layout_marginTop="15dp"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_map"
-        app:srcCompat="@mipmap/ic_placepickey" />
+        app:srcCompat="@mipmap/ic_placepickey113" />
 
     <ImageView
         android:id="@+id/place_info"
