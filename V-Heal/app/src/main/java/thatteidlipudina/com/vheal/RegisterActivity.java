@@ -40,10 +40,14 @@ public class RegisterActivity extends AppCompatActivity {
                     String phone= mPhone.getText().toString();
                     String pass= mPassword.getText().toString();
                     namestatic=name;
-                    Toast.makeText(RegisterActivity.this,username, Toast.LENGTH_SHORT).show();
-                    Backgroundworker b= new Backgroundworker(RegisterActivity.this);
-                    b.execute(type, username, pass, name, phone);
-
+                    if((pass!=null && !pass.equals("")) && (username!=null && !username.equals("null")) && (name!=null && !name.equals("")) && (phone!=null && !phone.equals(""))){
+                        Toast.makeText(RegisterActivity.this, username, Toast.LENGTH_SHORT).show();
+                        Backgroundworker b = new Backgroundworker(RegisterActivity.this);
+                        b.execute(type, username, pass, name, phone);
+                    }
+                    else{
+                        Toast.makeText(RegisterActivity.this, "Enter all details, please", Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
         }
