@@ -110,18 +110,23 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
         buttonProceed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if((diseaseText.getText().toString().equals("null"))) {
-                    diseasestatic = diseaseStaticAilments;
 
+                diseasestatic = diseaseStaticAilments;
+                String diseaseMandatory = diseaseText.getText().toString();
+
+                if (diseaseMandatory != null && !diseaseMandatory.equals("")) {
+                    System.out.println(diseaseStaticAilments + "hi");
+                    diseasestatic = diseaseMandatory;
+
+
+                    String type = "disease";
+                    Toast.makeText(UploadActivity.this, diseasestatic, Toast.LENGTH_SHORT).show();
+                    Backgroundworker b = new Backgroundworker(UploadActivity.this);
+                    b.execute(type, diseasestatic, pincodestatic, usernamestatic);
                 }
                 else{
-                    System.out.println(diseaseStaticAilments + "hi");
-                    diseasestatic = diseaseText.getText().toString();
+                    Toast.makeText(UploadActivity.this, "Reenter disease, please", Toast.LENGTH_SHORT).show();
                 }
-                String type=  "disease";
-                Toast.makeText(UploadActivity.this,diseasestatic, Toast.LENGTH_SHORT).show();
-                Backgroundworker b= new Backgroundworker(UploadActivity.this);
-                b.execute(type, diseasestatic, pincodestatic, usernamestatic);
             }
         });
 
@@ -131,7 +136,7 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
                 TextRecognizer txtRecognizer = new TextRecognizer.Builder(getApplicationContext()).build();
                 if (!txtRecognizer.isOperational()) {
                     txtView.setText(R.string.error_prompt);
-                } else {
+                } else if(bitmap!=null){
                     Frame frame = new Frame.Builder().setBitmap(bitmap).build();
                     SparseArray items = txtRecognizer.detect(frame);
                     StringBuilder strBuilder = new StringBuilder();
@@ -150,21 +155,28 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
                         }
                     }
                     String type="Upload";
-                    txtView.setText(strBuilder.toString().substring(0, strBuilder.toString().length() - 1));
-                    System.out.println(patientNamestatic + "hi");
-                    Backgroundworker b= new Backgroundworker(UploadActivity.this);
-                    b.execute(type,strBuilder.toString(), patientNamestatic);
-
+                    try {
+                        txtView.setText(strBuilder.toString().substring(0, strBuilder.toString().length() - 1));
+                        System.out.println(patientNamestatic + "hi");
+                        Backgroundworker b = new Backgroundworker(UploadActivity.this);
+                        b.execute(type, strBuilder.toString(), patientNamestatic);
+                    }
+                    catch (java.lang.StringIndexOutOfBoundsException e){
+                        txtView.setText("No words found in your image, choose another one");
+                    }
                 }
             }
         });
     }
-    public String getStringImage(Bitmap bmp){
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        byte[] imageBytes = baos.toByteArray();
-        String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
-        return encodedImage;
+    public String getStringImage(Bitmap bmp) {
+        if (bmp != null) {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+            byte[] imageBytes = baos.toByteArray();
+            String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+            return encodedImage;
+        }
+        return null;
     }
 
 
@@ -182,9 +194,14 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
 
             @Override
             protected void onPostExecute(String s) {
-                super.onPostExecute(s);
-                loading.dismiss();
-                Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
+                if (s != null && !s.equals("")) {
+                    loading.dismiss();
+                    Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
+                }
+                else{
+                    loading.dismiss();
+                    Toast.makeText(getApplicationContext(), "Image not chosen", Toast.LENGTH_LONG).show();
+                }
             }
 
             @Override
@@ -227,11 +244,14 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
                         e.printStackTrace();
                     } catch (IOException e) {
                         e.printStackTrace();
+                    } catch (NullPointerException e){
+
                     }
 
 
                 return null;
                 }
+
             }
 
             UploadImage ui = new UploadImage();
